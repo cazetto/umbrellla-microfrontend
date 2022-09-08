@@ -18,8 +18,14 @@
   -->
 
   <main>
+    <nav>
+      <application name="@umbrellla/navigation"></application>
+    </nav>
     <route default>
-      <application name="@single-spa/welcome"></application>
+      <application name="@umbrellla/shop"></application>
+    </route>
+    <route path="checkout">
+      <application name="@umbrellla/payment"></application>
     </route>
   </main>
 </single-spa-router>
