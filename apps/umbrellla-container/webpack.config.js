@@ -8,6 +8,7 @@ const deps = require('./package.json').dependencies;
 module.exports = {
   entry: './src/index',
   mode: 'development',
+  devtool: 'inline-source-map',
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
@@ -18,17 +19,14 @@ module.exports = {
     publicPath: 'auto',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.js'],
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: 'babel-loader',
+        use: 'ts-loader',
         exclude: /node_modules/,
-        options: {
-          presets: ['@babel/preset-react', '@babel/preset-typescript'],
-        },
       },
     ],
   },
@@ -37,15 +35,6 @@ module.exports = {
       name: 'Container',
       remotes: {
         Navigation: 'Navigation@http://localhost:3002/remoteEntry.js',
-      },
-      shared: {
-        ...deps,
-        react: { singleton: true, eager: true, requiredVersion: deps.react },
-        'react-dom': {
-          singleton: true,
-          eager: true,
-          requiredVersion: deps['react-dom'],
-        },
       },
     }),
     new FederatedTypesPlugin(),
