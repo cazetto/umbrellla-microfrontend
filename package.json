@@ -5,6 +5,18 @@
   "license": "MIT",
   "repository": "git@github.com:cazetto/umbrellla-microfrontend.git",
   "author": "André <cazetto.andre@gmail.com>",
-  "workspaces": ["apps/*"],
-  "private": true
+  "workspaces": [
+    "apps/*"
+  ],
+  "devDependencies": {
+    "lerna": "^5.5.2"
+  },
+  "private": true,
+  "scripts": {
+    "bootstrap": "yarn && npx lerna bootstrap",
+    "start": "lerna run start",
+    "build": "lerna run build",
+    "test": "lerna run test",
+    "eject": "lerna run eject"
+  }
 }
