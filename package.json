@@ -1,0 +1,10 @@
+{
+  "name": "umbrellla-microfrontend",
+  "description": "Umbrellla Micro Frontend study applications",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": "git@github.com:cazetto/umbrellla-microfrontend.git",
+  "author": "André <cazetto.andre@gmail.com>",
+  "workspaces": ["apps/*"],
+  "private": true
+}
