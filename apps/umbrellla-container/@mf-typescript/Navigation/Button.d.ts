@@ -1,6 +1,2 @@
-import * as React from 'react';
-declare type ButtonProps = {
-    size: 'small' | 'large';
-};
-declare const Button: React.FC<ButtonProps>;
-export default Button;
+/// <reference types="single-spa" />
+export declare const bootstrap: import("single-spa").LifeCycleFn<{}>, mount: import("single-spa").LifeCycleFn<{}>, unmount: import("single-spa").LifeCycleFn<{}>;
