@@ -34,7 +34,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'Container',
       remotes: {
-        Navigation: 'Navigation@http://localhost:3002/remoteEntry.js',
+        navigation: 'navigation@http://localhost:3002/remoteEntry.js',
       },
     }),
     new FederatedTypesPlugin(),

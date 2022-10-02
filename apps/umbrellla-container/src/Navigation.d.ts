@@ -1,7 +1,7 @@
 /// <reference types="react" />
 
-declare module 'Navigation/Button' {
-  const Button: React.ComponentType;
+declare module 'navigation/TopBar' {
+  const TopBar: React.ComponentType;
 
-  export default Button;
+  export default TopBar;
 }

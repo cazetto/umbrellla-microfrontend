@@ -34,10 +34,10 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'Navigation',
+      name: 'navigation',
       filename: 'remoteEntry.js',
       exposes: {
-        './Button': './src/Button.tsx',
+        './TopBar': './src/TopBar.tsx',
       },
       shared: {
         ...deps,
