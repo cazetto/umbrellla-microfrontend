@@ -1,42 +1,52 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin =
   require('webpack').container.ModuleFederationPlugin;
 const FederatedTypesPlugin = require('@module-federation/typescript');
-const path = require('path');
 const deps = require('./package.json').dependencies;
 
 module.exports = {
   entry: './src/index',
   mode: 'development',
-  devtool: 'inline-source-map',
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
-    port: 9000,
+    port: 9003,
   },
   output: {
     publicPath: 'auto',
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.tsx', '.js'],
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        loader: 'babel-loader',
         exclude: /node_modules/,
+        options: {
+          presets: ['@babel/preset-react', '@babel/preset-typescript'],
+        },
       },
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'Container',
-      remotes: {
-        navigation: 'navigation@http://localhost:9001/remoteEntry.js',
-        shop: 'shop@http://localhost:9008/remoteEntry.js',
-        payments: 'payments@http://localhost:9003/remoteEntry.js',
+      name: 'payments',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './CartWidget': './src/CartWidget.tsx',
+      },
+      shared: {
+        ...deps,
+        react: { singleton: true, eager: true, requiredVersion: deps.react },
+        'react-dom': {
+          singleton: true,
+          eager: true,
+          requiredVersion: deps['react-dom'],
+        },
       },
     }),
     new FederatedTypesPlugin(),

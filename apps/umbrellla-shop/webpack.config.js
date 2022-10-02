@@ -12,7 +12,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
-    port: 9008,
+    port: 9002,
   },
   output: {
     publicPath: 'auto',

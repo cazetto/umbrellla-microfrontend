@@ -12,4 +12,10 @@ registerApplication(
   (location) => location.pathname.startsWith('/')
 );
 
+registerApplication(
+  'CartWidget',
+  () => import('payments/CartWidget') as any,
+  (location) => location.pathname.startsWith('/')
+);
+
 start();
