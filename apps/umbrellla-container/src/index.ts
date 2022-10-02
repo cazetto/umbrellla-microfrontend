@@ -1,8 +1,14 @@
 import { registerApplication, start } from 'single-spa';
 
 registerApplication(
-  'NavigationButton',
+  'NavigationTopBar',
   () => import('navigation/TopBar') as any,
+  (location) => location.pathname.startsWith('/')
+);
+
+registerApplication(
+  'ProductsHome',
+  () => import('shop/ProductsHome') as any,
   (location) => location.pathname.startsWith('/')
 );
 
