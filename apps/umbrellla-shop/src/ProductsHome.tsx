@@ -11,9 +11,11 @@ import {
 export function ProductsHome() {
   return (
     <ForceThemeProvider theme={themePrimer} globalStyle={<PrimerGlobalStyle />}>
-      <Box bg='colorBlue100' height='282px'></Box>
-      <Box bg='colorBlue200' height='282px'></Box>
-      <Box bg='colorBlue300' height='282px'></Box>
+      <Box display='block' width='100%'>
+        <Box bg='colorBlue100' height='282px'></Box>
+        <Box bg='colorBlue200' height='282px'></Box>
+        <Box bg='colorBlue300' height='282px'></Box>
+      </Box>
     </ForceThemeProvider>
   );
 }

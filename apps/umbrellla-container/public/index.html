@@ -12,6 +12,19 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="umbrellla-container-root"></div>
+    <div style="height: 100%; display: flex; flex-direction: column">
+      <div id="single-spa-application:NavigationTopBar"></div>
+      <main style="display: flex; flex: 1">
+        <div
+          id="single-spa-application:NavigationSideBar"
+          style="display: flex"
+        ></div>
+        <div
+          id="single-spa-application:ProductsHome"
+          style="display: flex; flex: 1"
+        ></div>
+      </main>
+      <div id="single-spa-application:CartWidget"></div>
+    </div>
   </body>
 </html>
