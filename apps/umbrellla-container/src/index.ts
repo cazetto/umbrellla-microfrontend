@@ -7,6 +7,12 @@ registerApplication(
 );
 
 registerApplication(
+  'NavigationSideBar',
+  () => import('navigation/SideBar') as any,
+  (location) => location.pathname.startsWith('/')
+);
+
+registerApplication(
   'ProductsHome',
   () => import('shop/ProductsHome') as any,
   (location) => location.pathname.startsWith('/')

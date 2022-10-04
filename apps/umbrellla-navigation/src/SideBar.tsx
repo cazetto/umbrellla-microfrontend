@@ -8,18 +8,10 @@ import {
   PrimerGlobalStyle,
 } from 'force-components';
 
-export function CartWidget() {
+function SideBar() {
   return (
     <ForceThemeProvider theme={themePrimer} globalStyle={<PrimerGlobalStyle />}>
-      <Box
-        position='fixed'
-        top='60px'
-        right='20px'
-        bg='colorRed'
-        width='320px'
-        height='380px'
-        zIndex='2'
-      ></Box>
+      <Box display='block' bg='colorYellow' width='60px'></Box>
     </ForceThemeProvider>
   );
 }
@@ -27,7 +19,7 @@ export function CartWidget() {
 export const { bootstrap, mount, unmount } = singleSpaReact({
   React,
   ReactDOMClient,
-  rootComponent: CartWidget,
+  rootComponent: SideBar,
   renderType: 'createRoot',
   errorBoundary(err, info, props) {
     return <div>This renders when a catastrophic error occurs</div>;

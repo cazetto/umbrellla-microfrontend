@@ -38,6 +38,7 @@ module.exports = {
       filename: 'remoteEntry.js',
       exposes: {
         './TopBar': './src/TopBar.tsx',
+        './SideBar': './src/SideBar.tsx',
       },
       shared: {
         ...deps,
