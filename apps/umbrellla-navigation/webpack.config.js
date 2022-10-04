@@ -40,6 +40,9 @@ module.exports = {
         './TopBar': './src/TopBar.tsx',
         './SideBar': './src/SideBar.tsx',
       },
+      remotes: {
+        state: 'state@http://localhost:9004/remoteEntry.js',
+      },
       shared: {
         ...deps,
         react: { singleton: true, eager: true, requiredVersion: deps.react },

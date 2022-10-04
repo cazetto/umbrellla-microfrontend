@@ -35,8 +35,9 @@ module.exports = {
       name: 'Container',
       remotes: {
         navigation: 'navigation@http://localhost:9001/remoteEntry.js',
-        shop: 'shop@http://localhost:9008/remoteEntry.js',
+        shop: 'shop@http://localhost:9002/remoteEntry.js',
         payments: 'payments@http://localhost:9003/remoteEntry.js',
+        state: 'payments@http://localhost:9004/remoteEntry.js',
       },
     }),
     new FederatedTypesPlugin(),

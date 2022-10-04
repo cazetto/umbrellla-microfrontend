@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOMClient from 'react-dom/client';
 import singleSpaReact from 'single-spa-react';
 import {
@@ -8,8 +8,17 @@ import {
   themePrimer,
   PrimerGlobalStyle,
 } from 'force-components';
+import state from 'state/state';
 
 function TopBar() {
+  useEffect(() => {
+    console.log('TopBar - mount:', state.getData().wat);
+    setTimeout(() => {
+      state.setData({ wat: 2 });
+      console.log('TopBar - wat data changed to:', state.getData().wat);
+    }, 1002);
+  }, []);
+
   const handleOpen = () => {
     console.log('handleOpen');
   };

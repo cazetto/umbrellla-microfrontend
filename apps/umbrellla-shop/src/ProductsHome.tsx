@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOMClient from 'react-dom/client';
 import singleSpaReact from 'single-spa-react';
 import {
@@ -8,7 +8,15 @@ import {
   PrimerGlobalStyle,
 } from 'force-components';
 
+import state from 'state/state';
+
 export function ProductsHome() {
+  useEffect(() => {
+    console.log('ProductsHome - mount: ', state.getData().wat);
+    setInterval(() => {
+      console.log('ProductsHome - interval: ', state.getData().wat);
+    }, 1000);
+  }, []);
   return (
     <ForceThemeProvider theme={themePrimer} globalStyle={<PrimerGlobalStyle />}>
       <Box display='block' width='100%'>

@@ -1,5 +1,4 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin =
   require('webpack').container.ModuleFederationPlugin;
 const FederatedTypesPlugin = require('@module-federation/typescript');
@@ -12,7 +11,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
-    port: 9002,
+    port: 9004,
   },
   output: {
     publicPath: 'auto',
@@ -27,34 +26,22 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          presets: ['@babel/preset-react', '@babel/preset-typescript'],
+          presets: ['@babel/preset-typescript'],
         },
       },
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'shop',
+      name: 'state',
       filename: 'remoteEntry.js',
       exposes: {
-        './ProductsHome': './src/ProductsHome.tsx',
-      },
-      remotes: {
-        state: 'state@http://localhost:9004/remoteEntry.js',
+        './state': './src/state.ts',
       },
       shared: {
         ...deps,
-        react: { singleton: true, eager: true, requiredVersion: deps.react },
-        'react-dom': {
-          singleton: true,
-          eager: true,
-          requiredVersion: deps['react-dom'],
-        },
       },
     }),
     new FederatedTypesPlugin(),
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-    }),
   ],
 };
