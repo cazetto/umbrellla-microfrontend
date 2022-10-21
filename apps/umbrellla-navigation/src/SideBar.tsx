@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOMClient from 'react-dom/client';
 import singleSpaReact from 'single-spa-react';
+import { useMachine } from '@xstate/react';
 
 import {
   Box,
@@ -9,10 +10,28 @@ import {
   PrimerGlobalStyle,
 } from 'force-components';
 
+import sidebarStateMachine from 'state/sidebar-state-machine';
+
 function SideBar() {
+  const [sidebarState, changeSidebarState] = useMachine(sidebarStateMachine);
+  const sidebarIsCollapsed = sidebarState.matches('collapsed');
+  const sidebarWidth = sidebarIsCollapsed ? '60px' : '220px';
+
+  const handleToogle = () => {
+    changeSidebarState('TOGGLE');
+  };
   return (
     <ForceThemeProvider theme={themePrimer} globalStyle={<PrimerGlobalStyle />}>
-      <Box display='block' bg='colorYellow' width='60px'></Box>
+      <Box display='block' bg='colorYellow' width={sidebarWidth}>
+        <Box
+          color='colorYellow900'
+          textAlign='center'
+          mt='2'
+          onClick={handleToogle}
+        >
+          {sidebarIsCollapsed ? 'Open' : 'Close'}
+        </Box>
+      </Box>
     </ForceThemeProvider>
   );
 }

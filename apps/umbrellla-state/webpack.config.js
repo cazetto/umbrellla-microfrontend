@@ -36,7 +36,7 @@ module.exports = {
       name: 'state',
       filename: 'remoteEntry.js',
       exposes: {
-        './state': './src/state.ts',
+        './sidebar-state-machine': './src/sidebar-state-machine.ts',
       },
       shared: {
         ...deps,

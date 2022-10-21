@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ReactDOMClient from 'react-dom/client';
 import singleSpaReact from 'single-spa-react';
+import { useMachine } from '@xstate/react';
+
 import {
   Box,
   Text,
@@ -8,22 +10,19 @@ import {
   themePrimer,
   PrimerGlobalStyle,
 } from 'force-components';
-import state from 'state/state';
+
+import sidebarStateMachine from 'state/sidebar-state-machine';
 
 function TopBar() {
-  useEffect(() => {
-    console.log('TopBar - mount:', state.getData().wat);
-    setTimeout(() => {
-      state.setData({ wat: 2 });
-      console.log('TopBar - wat data changed to:', state.getData().wat);
-    }, 1002);
-  }, []);
+  const [sidebarState, changeSidebarState] = useMachine(sidebarStateMachine);
 
   const handleOpen = () => {
-    console.log('handleOpen');
+    changeSidebarState('TOGGLE');
   };
+
   return (
     <ForceThemeProvider theme={themePrimer} globalStyle={<PrimerGlobalStyle />}>
+      {sidebarState.value}
       <Box
         display='flex'
         flexDirection='row'

@@ -1,8 +1,4 @@
-declare module 'state/state' {
-  const state: {
-    getData: () => { wat: number };
-    setData: (newData: { wat: number }) => void;
-  };
-
+declare module 'state/sidebar-state-machine' {
+  const state: any;
   export default state;
 }

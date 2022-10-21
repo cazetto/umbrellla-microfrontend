@@ -1,11 +1,7 @@
-declare function getData(): {
-    wat: number;
+declare const _default: {
+    sidebarStateMachine: import("xstate").StateMachine<unknown, any, import("xstate").AnyEventObject, {
+        value: any;
+        context: unknown;
+    }, import("xstate").BaseActionObject, import("xstate").ServiceMap, import("xstate").ResolveTypegenMeta<import("xstate").TypegenDisabled, import("xstate").AnyEventObject, import("xstate").BaseActionObject, import("xstate").ServiceMap>>;
 };
-declare function setData(newData: {
-    wat: number;
-}): void;
-declare const state: {
-    getData: typeof getData;
-    setData: typeof setData;
-};
-export default state;
+export default _default;
