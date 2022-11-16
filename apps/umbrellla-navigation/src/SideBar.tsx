@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOMClient from 'react-dom/client';
 import singleSpaReact from 'single-spa-react';
 import { useMachine } from '@xstate/react';
@@ -16,6 +16,14 @@ function SideBar() {
   const [sidebarState, changeSidebarState] = useMachine(sidebarStateMachine);
   const sidebarIsCollapsed = sidebarState.matches('collapsed');
   const sidebarWidth = sidebarIsCollapsed ? '60px' : '220px';
+
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setInterval(() => {
+      setCount((value) => value + 1);
+    }, 500);
+  }, []);
 
   const handleToogle = () => {
     changeSidebarState('TOGGLE');

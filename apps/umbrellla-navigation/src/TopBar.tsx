@@ -22,7 +22,7 @@ function TopBar() {
 
   return (
     <ForceThemeProvider theme={themePrimer} globalStyle={<PrimerGlobalStyle />}>
-      {sidebarState.value}
+      <Box>{sidebarState.value}</Box>
       <Box
         display='flex'
         flexDirection='row'
